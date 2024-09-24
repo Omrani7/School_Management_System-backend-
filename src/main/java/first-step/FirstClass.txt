@@ -1,0 +1,16 @@
+package com.Omrani.med;
+
+public class FirstClass {
+    private String myVar;
+
+
+    public FirstClass(String myVar) {
+        this.myVar = myVar;
+    }
+
+    public String hello(){
+        return " hello everyone!  my var =  "+myVar+" ";
+
+    }
+
+}

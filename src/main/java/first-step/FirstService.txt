@@ -1,0 +1,61 @@
+package com.Omrani.med;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+
+@Service
+
+public class FirstService {
+
+    @Value("${my.custom.property}")
+    private String customProp;
+
+    @Value("${my.custom.property.int}")
+    private int customPropInt;
+
+
+    private  final FirstClass fs;
+// private Environment environment;
+
+    //constructor injection
+  @Autowired
+    public FirstService( @Qualifier("secondary") FirstClass fs) {
+       this.fs = fs;
+   }
+    //methode injection : same as constructor
+
+  /*  @Autowired
+    public  void methodeInjection(@Qualifier("FirstClass") FirstClass fs) {
+        this.fs = fs;
+    }*/
+
+
+    public String tellStory()
+{
+    return " this text is from  dependency service +  "+fs.hello();
+}
+
+/*@Autowired
+public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
+
+    public String getJavaVersion() {
+        return environment.getProperty("java.version");
+    }
+    public String getProperty() {
+        return environment.getProperty("my.custom.property");
+    }*/
+
+    public String getCustomProp() {
+        return customProp;
+    }
+
+
+    public int getCustomPropInt() {
+        return customPropInt;
+    }
+}

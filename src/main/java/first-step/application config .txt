@@ -1,0 +1,24 @@
+package com.Omrani.med;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration
+public class ApplicationConfig {
+
+    @Bean
+    @Profile("test")
+    @Qualifier("primary")
+    public  FirstClass FirstClass(){
+        return	new FirstClass(" bean 1");
+    }
+    @Bean
+    @Profile("test")
+    @Qualifier("secondary")
+    public  FirstClass secondBean(){
+        return	new FirstClass("bean 2");
+    }
+
+}

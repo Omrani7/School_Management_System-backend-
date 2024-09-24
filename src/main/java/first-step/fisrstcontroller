@@ -1,0 +1,49 @@
+package com.Omrani.med;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class FirstController {
+    @GetMapping("/hello")
+    public String helloWorld(){
+        return "hello world";
+    }
+    @GetMapping("/hello-2")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String helloWorld2(){
+        return "hello world 2 ";
+    }
+    @PostMapping("/post")
+    public String post(@RequestBody  String message){
+        return "this is a post request with a message = "+message ;
+    }
+
+    @PostMapping("/post-order")
+    public String post(
+            @RequestBody Order order){
+
+        return "this is a post request with an order = " + order.toString();
+    }
+
+
+    @PostMapping("/post-order2")
+    public String post(
+            @RequestBody OrderRecord order){
+
+        return "this is a post request with an order = " + order.toString();
+    }
+    @GetMapping("/hello/{user-name}")
+    public String helloUser(@PathVariable("user-name") String userName)
+    {
+        return "hello "+ userName;
+    }
+    @GetMapping("/helloWithParams")
+    public String helloUserWithParams(
+            @RequestParam("user-name") String userName,
+            @RequestParam("user-age") int userAge)
+    {
+        return "hello "+ userName+" age = "+userAge;
+    }
+
+}
