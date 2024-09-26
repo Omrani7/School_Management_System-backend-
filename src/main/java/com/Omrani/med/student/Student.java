@@ -1,6 +1,8 @@
 package com.Omrani.med.student;
 
 
+import com.Omrani.med.Role;
+import com.Omrani.med.User;
 import com.Omrani.med.profile.Profile;
 import com.Omrani.med.school.School;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -9,14 +11,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-public class Student {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String lastName;
-    String firstName;
-    int age;
-    String email;
+public class Student  extends User {
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "school_id",nullable = false)
     @JsonBackReference
@@ -27,13 +24,29 @@ public class Student {
             cascade = CascadeType.ALL
     )
     private Profile studentprofile;
+private String  firstname;
+private String lastname;
+;
 
-    public long getId() {
-        return id;
+    public Student() {
+    }
+    public Student(String userName, Role role,
+                   int age, String email,
+                    String firstname, String lastname) {
+        super(userName, role, age, email);
+
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Student(String userName, Role role,
+                   int age, String email, School school,
+                   Profile studentprofile, String firstname, String lastname) {
+        super(userName, role, age, email);
+        this.school = school;
+        this.studentprofile = studentprofile;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     public School getSchool() {
@@ -52,48 +65,19 @@ public class Student {
         this.studentprofile = studentprofile;
     }
 
-
-    public Student(String lastName, String firstName, int age, String email) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.age = age;
-        this.email = email;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public Student() {
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
 }

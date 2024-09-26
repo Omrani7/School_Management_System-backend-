@@ -34,9 +34,12 @@ public class StudentService {
         return studentRepository.findAll().stream().map(studentMapper::convert).collect(Collectors.toList());
       }
     public List<StudentResponceDTO> findStudentByName(String name){
-         return studentRepository.findAllByFirstNameContaining(name).stream().map(studentMapper::convert).collect(Collectors.toList());
+         return studentRepository.findAllByfirstnameContaining(name).stream().map(studentMapper::convert).collect(Collectors.toList());
     }
     public void deleteStudentById(long id){
         studentRepository.deleteById(id);
+    }
+    public void delete_all_students(){
+        studentRepository.deleteAll();
     }
 }

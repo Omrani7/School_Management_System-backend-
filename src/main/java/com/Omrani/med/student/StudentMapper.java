@@ -10,16 +10,19 @@ public class StudentMapper {
             throw new IllegalArgumentException("student must not be null");
         }
         Student s = new Student();
-        s.setEmail(student.email());
-        s.setFirstName(student.firstName());
-        s.setLastName(student.lastName());
+        s.setEmail(student.userdto().email());
+        s.setFirstname(student.firstname());
+        s.setLastname(student.lastname());
+        s.setAge(student.userdto().age());
+        s.setRole(student.userdto().role());
+        s.setUserName(student.userdto().username());
         School school = new School();
         school.setId(student.schoolId());
         s.setSchool(school);
         return  s;
     }
     public StudentResponceDTO convert(Student student){
-        return new StudentResponceDTO(student.getFirstName(),student.getLastName(),
+        return new StudentResponceDTO(student.getFirstname(),student.getLastname(),
                  student.getEmail());
     }
 }

@@ -56,6 +56,11 @@ private final StudentService studentService;
 
         return studentService.saveStudent(student);
     }
+    @DeleteMapping("students")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void delete_all(){
+        studentService.delete_all_students();
+    }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exp
