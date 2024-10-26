@@ -1,8 +1,7 @@
 package com.Omrani.med.student;
 
-import com.Omrani.med.Role;
-import com.Omrani.med.UserDto;
-import org.junit.jupiter.api.AfterEach;
+import com.Omrani.med.user.Role;
+import com.Omrani.med.user.UserDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

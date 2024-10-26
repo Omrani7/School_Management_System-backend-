@@ -1,8 +1,8 @@
 package com.Omrani.med.student;
 
 
-import com.Omrani.med.Role;
-import com.Omrani.med.User;
+import com.Omrani.med.user.Role;
+import com.Omrani.med.user.User;
 import com.Omrani.med.profile.Profile;
 import com.Omrani.med.school.School;
 import com.fasterxml.jackson.annotation.JsonBackReference;

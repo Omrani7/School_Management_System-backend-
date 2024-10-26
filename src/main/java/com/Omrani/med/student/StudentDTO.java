@@ -1,7 +1,6 @@
 package com.Omrani.med.student;
 
-import com.Omrani.med.Role;
-import com.Omrani.med.UserDto;
+import com.Omrani.med.user.UserDto;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

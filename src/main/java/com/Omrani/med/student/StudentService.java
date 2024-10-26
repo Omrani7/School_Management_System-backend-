@@ -1,9 +1,7 @@
 package com.Omrani.med.student;
 
-import com.Omrani.med.student.StudentDTO;
-import com.Omrani.med.student.StudentMapper;
-import com.Omrani.med.student.StudentRepository;
-import com.Omrani.med.student.StudentResponceDTO;
+import com.Omrani.med.user.User;
+import com.Omrani.med.user.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +13,16 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
 
-    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper) {
+    public StudentService( StudentRepository studentRepository, StudentMapper studentMapper) {
+
         this.studentRepository = studentRepository;
         this.studentMapper = studentMapper;
     }
     public StudentResponceDTO saveStudent(StudentDTO dto){
+
+
+
+
         Student stud = studentMapper.toStudent(dto);
 
         var savedstudent = studentRepository.save(stud);

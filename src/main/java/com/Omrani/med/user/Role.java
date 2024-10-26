@@ -1,4 +1,4 @@
-package com.Omrani.med;
+package com.Omrani.med.user;
 
 public enum Role { Student, Admin
 }

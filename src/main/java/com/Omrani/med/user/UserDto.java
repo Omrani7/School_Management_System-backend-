@@ -1,5 +1,6 @@
-package com.Omrani.med;
+package com.Omrani.med.user;
 
+import com.Omrani.med.user.Role;
 import jakarta.validation.constraints.NotEmpty;
 
 public record UserDto(
@@ -10,5 +11,7 @@ public record UserDto(
           @NotEmpty
           int age,
            @NotEmpty
-            Role role) {
+        Role role,
+        @NotEmpty
+        String password) {
 }
