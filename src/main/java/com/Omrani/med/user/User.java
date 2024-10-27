@@ -24,7 +24,7 @@ public class User {
     private int age;
 
     @NotNull
-    @Email // Ensure the email is in a valid format
+    @Email
     private String email;
 
     public User() {

@@ -1,5 +1,6 @@
 package com.Omrani.med.teacher;
 
+import com.Omrani.med.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +41,15 @@ public class TeacherController {
 
     @PostMapping
     public TeacherResponseDTO createTeacher(@RequestBody TeacherDTO teacherDTO) {
+        // Extracting UserDTO from TeacherDTO to create a Teacher entity
+        UserDto userDTO = teacherDTO.user();
         Teacher teacher = teacherService.saveTeacher(new Teacher(
-                teacherDTO.getUserName(),
-                teacherDTO.getRole(),
-                teacherDTO.getAge(),
-                teacherDTO.getEmail(),
-                teacherDTO.getSubjectSpecialization(),
-                teacherDTO.getContactInformation()
+                userDTO.username(),
+                userDTO.role(),
+                userDTO.age(),
+                userDTO.email(),
+                teacherDTO.subjectSpecialization(),
+                teacherDTO.contactInformation()
         ));
         return new TeacherResponseDTO(teacher.getId(), teacher.getUserName(),
                 teacher.getEmail(), teacher.getSubjectSpecialization(),
@@ -58,12 +61,13 @@ public class TeacherController {
         Optional<Teacher> teacherOptional = teacherService.getTeacherById(id);
         if (teacherOptional.isPresent()) {
             Teacher updatedTeacher = teacherOptional.get();
-            updatedTeacher.setUserName(teacherDetails.getUserName());
-            updatedTeacher.setRole(teacherDetails.getRole());
-            updatedTeacher.setAge(teacherDetails.getAge());
-            updatedTeacher.setEmail(teacherDetails.getEmail());
-            updatedTeacher.setSubjectSpecialization(teacherDetails.getSubjectSpecialization());
-            updatedTeacher.setContactInformation(teacherDetails.getContactInformation());
+            UserDto userDTO = teacherDetails.user();
+            updatedTeacher.setUserName(userDTO.username());
+            updatedTeacher.setRole(userDTO.role());
+            updatedTeacher.setAge(userDTO.age());
+            updatedTeacher.setEmail(userDTO.email());
+            updatedTeacher.setSubjectSpecialization(teacherDetails.subjectSpecialization());
+            updatedTeacher.setContactInformation(teacherDetails.contactInformation());
             teacherService.saveTeacher(updatedTeacher);
             return ResponseEntity.ok(new TeacherResponseDTO(
                     updatedTeacher.getId(),

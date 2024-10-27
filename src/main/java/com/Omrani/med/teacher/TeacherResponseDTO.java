@@ -1,11 +1,12 @@
 package com.Omrani.med.teacher;
 
-public class TeacherResponseDTO {
-    private Long id;
-    private String userName;
-    private String email;
-    private String subjectSpecialization;
-    private String contactInformation;
 
 
-}
+public record TeacherResponseDTO(
+        Long id,
+        String userName,
+        String email,
+        String subjectSpecialization,
+        String contactInformation
+) {}
+
